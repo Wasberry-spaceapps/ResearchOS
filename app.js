@@ -1,6 +1,6 @@
 // REPLACE THESE WITH YOUR SUPABASE CREDENTIALS
 const SUPABASE_URL = "https://deioiojytowejhyszztw.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_D0RI2t1-ixTlEZ5WrvN3xQ_BLJsJ8Sc";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlaW9pb2p5dG93ZWpoeXN6enR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDczODEsImV4cCI6MjA5Nzg4MzM4MX0.fkYIluOV3nHPx1y59YcEAA4f0ClYijbo8HMd8tQZDT0";
 
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
