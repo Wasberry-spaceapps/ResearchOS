@@ -35,8 +35,8 @@ const formSimilar = document.getElementById('form-similar');
 const refreshLibraryBtn = document.getElementById('refresh-library');
 
 
-// --- 1. AUTH STATE OBSERVER ---
-supabase.auth.onAuthStateChange((event, session) => {
+// --- 1. AUTH LOGIC & UI UPDATER ---
+async function updateUI(session) {
   currentUser = session?.user || null;
   
   if (currentUser) {
@@ -56,14 +56,24 @@ supabase.auth.onAuthStateChange((event, session) => {
   } else {
     // Logged Out
     if (userMenu) userMenu.classList.add('hidden');
-    if (btnLogin) btnLogin.classList.remove('hidden');
+    if (btnLogin) btnLogin.classList.remove('hidden'); // This unhides your login button!
     
     // If on pipeline page
     if (unauthedState && authedState) {
-      unauthedState.classList.remove('hidden');
+      unauthedState.classList.remove('hidden'); // This unhides the pipeline login message!
       authedState.classList.add('hidden');
     }
   }
+}
+
+// 1A. Check auth state immediately on page load
+supabase.auth.getSession().then(({ data: { session } }) => {
+  updateUI(session);
+});
+
+// 1B. Listen for future sign ins / sign outs
+supabase.auth.onAuthStateChange((event, session) => {
+  updateUI(session);
 });
 
 
