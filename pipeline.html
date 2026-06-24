@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResearchOS | Pipeline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title" class="serif">Sign In</h2>
+        <button id="close-modal">✕</button>
+      </div>
+      <div class="modal-tabs">
+        <button id="tab-signin" class="active">Sign In</button>
+        <button id="tab-signup">Sign Up</button>
+      </div>
+      <form id="auth-form">
+        <input type="email" id="auth-email" placeholder="Email address" required>
+        <input type="password" id="auth-password" placeholder="Password" required>
+        <input type="password" id="auth-confirm" class="hidden" placeholder="Confirm password">
+        <button type="submit" id="auth-submit">Submit</button>
+      </form>
+      <div id="auth-msg" class="msg"></div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-left">
+      <a href="index.html" class="nav-brand serif">ResearchOS</a>
+      <div class="nav-links">
+        <a href="pipeline.html">Pipeline</a>
+        <a href="docs.html">Docs</a>
+      </div>
+    </div>
+    <div class="nav-auth">
+      <button id="btn-login" class="nav-link hidden">Sign In / Sign Up</button>
+      <div id="user-menu" class="nav-user hidden">
+        <span id="user-email"></span>
+        <button id="btn-logout" class="nav-link">Sign Out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="research-pipeline">
+      <h2 class="serif section-heading">Research Pipeline</h2>
+      
+      <div id="unauthed-state" class="notice-box hidden">
+        Sign in to use the Research Pipeline.
+      </div>
+
+      <div id="authed-state" class="hidden">
+        <div class="pipeline-tabs">
+          <button class="pipe-tab active" data-target="tab-search">Deep Search</button>
+          <button class="pipe-tab" data-target="tab-similar">Find Similar</button>
+          <button class="pipe-tab" data-target="tab-library">My Library</button>
+        </div>
+
+        <div id="tab-search" class="pipe-content active">
+          <form id="form-search" class="tool-form">
+            <textarea id="search-query" placeholder="Natural language research query..." required></textarea>
+            <div class="form-row">
+              <input type="number" id="search-start" placeholder="From Year (e.g. 2018)">
+              <input type="number" id="search-end" placeholder="To Year (e.g. 2024)">
+              <select id="search-type">
+                <option value="keyword">Keyword</option>
+                <option value="neural" selected>Semantic (AI)</option>
+              </select>
+            </div>
+            <button type="submit">Run Search</button>
+          </form>
+          <div id="search-results" class="results-container"></div>
+        </div>
+
+        <div id="tab-similar" class="pipe-content hidden">
+          <form id="form-similar" class="tool-form">
+            <input type="url" id="similar-url" placeholder="Paste paper URL or DOI..." required>
+            <button type="submit">Find Similar Papers</button>
+          </form>
+          <div id="similar-results" class="results-container"></div>
+        </div>
+
+        <div id="tab-library" class="pipe-content hidden">
+          <div class="library-controls">
+            <button id="refresh-library">Refresh Library</button>
+          </div>
+          <div id="library-results" class="results-container"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
