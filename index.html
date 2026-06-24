@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Auth Modal (Same across all pages) -->
   <div id="auth-modal" class="modal hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,10 +33,10 @@
 
   <nav>
     <div class="nav-left">
-      <a href="index.html" class="nav-brand serif">ResearchOS</a>
+      <a href="/" class="nav-brand serif">ResearchOS</a>
       <div class="nav-links">
-        <a href="pipeline.html">Pipeline</a>
-        <a href="docs.html">Docs</a>
+        <a href="/pipeline">Pipeline</a>
+        <a href="/everything">Everything Else // Above Everything</a>
       </div>
     </div>
     <div class="nav-auth">
@@ -51,35 +49,27 @@
   </nav>
 
   <main>
-    <section class="editorial-landing">
-      <blockquote class="serif">
-        "It is good that [whatever we do] kicks our ass, messes with our heads. Would it be worth anything otherwise?"
-        <cite>— Ryan Holiday</cite>
-      </blockquote>
-      <p class="landing-sub">Sciences, arts, humanities... they're all great, but maybe management might be something a bit overlooked. Managing ourselves on our journeys.</p>
-      
-      <div class="book-row">
-        <!-- Pure divs, no links -->
-        <div class="book">
-          <img src="https://covers.openlibrary.org/b/isbn/9781591846352-M.jpg" alt="The Obstacle Is the Way">
-          <span class="book-title">The Obstacle Is the Way</span>
-        </div>
-        <div class="book">
-          <img src="https://covers.openlibrary.org/b/isbn/9781591847816-M.jpg" alt="Ego Is the Enemy">
-          <span class="book-title">Ego Is the Enemy</span>
-        </div>
-        <div class="book">
-          <img src="https://covers.openlibrary.org/b/isbn/9780525538585-M.jpg" alt="Stillness Is the Key">
-          <span class="book-title">Stillness Is the Key</span>
-        </div>
-        <div class="book">
-          <img src="https://covers.openlibrary.org/b/isbn/9780735211735-M.jpg" alt="The Daily Stoic">
-          <span class="book-title">The Daily Stoic</span>
-        </div>
-      </div>
+    <section class="documentation">
+      <h2 class="serif section-heading">Documentation & Notes</h2>
+      <article class="doc-body">
+        <h3 class="serif">I. Purpose</h3>
+        <p>ResearchOS was built out of necessity for the Postgraduate Research Hub Discord community. It is designed for postgrads drowning in the trenches of paper deadlines, providing an unopinionated, dense interface to execute queries, process literature, and manage knowledge.</p>
+        <h3 class="serif">II. Architecture & Security</h3>
+        <p>This is a two-layer application. The frontend operates entirely statically via HTML/CSS/JS. The backend relies on Vercel Serverless Functions to securely route Exa API requests.</p>
+        <p><strong>Auth & Data:</strong> Managed by Supabase. Your private data is secured via Row Level Security (RLS). No service keys are exposed to the client.</p>
+        <h3 class="serif">III. Exa Protocol</h3>
+        <p>The core pipeline queries the Exa neural search engine.</p>
+        <ul>
+          <li><strong>Semantic Search:</strong> Leverages Exa's neural search type. Phrase queries organically.</li>
+          <li><strong>Limitations:</strong> Search depth is locked to reputable academic domains. Summaries are AI-generated; always cross-reference the original manuscript.</li>
+        </ul>
+        <h3 class="serif">IV. Contributing</h3>
+        <p>To report broken features, consult the community repo or submit an issue via the Discord hub.</p>
+        <h3 class="serif">V. Changelog</h3>
+        <p class="changelog-entry"><strong>v1.1.0</strong> — Refactored to multi-page Wiki architecture. Fixed DOM event listener auth bugs.</p>
+      </article>
     </section>
   </main>
-
   <script src="app.js"></script>
 </body>
 </html>
