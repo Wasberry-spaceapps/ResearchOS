@@ -2,7 +2,7 @@
 const SUPABASE_URL = "https://deioiojytowejhyszztw.supabaseClient.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlaW9pb2p5dG93ZWpoeXN6enR3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMDczODEsImV4cCI6MjA5Nzg4MzM4MX0.fkYIluOV3nHPx1y59YcEAA4f0ClYijbo8HMd8tQZDT0";
 
-const supabaseClient = window.supabaseClient.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Global State
 let currentUser = null;
