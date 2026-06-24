@@ -1,0 +1,8 @@
+{
+  "name": "researchos",
+  "version": "1.0.0",
+  "description": "Postgraduate Research Hub",
+  "dependencies": {
+    "exa-js": "^1.0.12"
+  }
+}
