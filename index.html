@@ -3,21 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ResearchOS | Postgraduate Research Hub</title>
-  
-  <!-- Typography -->
+  <title>ResearchOS | Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Supabase -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Auth Modal -->
+  <!-- Auth Modal (Same across all pages) -->
   <div id="auth-modal" class="modal hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -39,14 +34,23 @@
   </div>
 
   <nav>
-    <div class="nav-brand serif">ResearchOS</div>
-    <div class="nav-auth" id="nav-auth-container">
-      <button id="btn-login" class="nav-link">Sign In / Sign Up</button>
+    <div class="nav-left">
+      <a href="index.html" class="nav-brand serif">ResearchOS</a>
+      <div class="nav-links">
+        <a href="pipeline.html">Pipeline</a>
+        <a href="docs.html">Docs</a>
+      </div>
+    </div>
+    <div class="nav-auth">
+      <button id="btn-login" class="nav-link hidden">Sign In / Sign Up</button>
+      <div id="user-menu" class="nav-user hidden">
+        <span id="user-email"></span>
+        <button id="btn-logout" class="nav-link">Sign Out</button>
+      </div>
     </div>
   </nav>
 
   <main>
-    <!-- SECTION 3: Everything Else -->
     <section class="editorial-landing">
       <blockquote class="serif">
         "It is good that [whatever we do] kicks our ass, messes with our heads. Would it be worth anything otherwise?"
@@ -55,104 +59,24 @@
       <p class="landing-sub">Sciences, arts, humanities... they're all great, but maybe management might be something a bit overlooked. Managing ourselves on our journeys.</p>
       
       <div class="book-row">
-        <a href="https://www.amazon.com/dp/1591846358" target="_blank" class="book">
+        <!-- Pure divs, no links -->
+        <div class="book">
           <img src="https://covers.openlibrary.org/b/isbn/9781591846352-M.jpg" alt="The Obstacle Is the Way">
           <span class="book-title">The Obstacle Is the Way</span>
-        </a>
-        <a href="https://www.amazon.com/dp/1591847818" target="_blank" class="book">
+        </div>
+        <div class="book">
           <img src="https://covers.openlibrary.org/b/isbn/9781591847816-M.jpg" alt="Ego Is the Enemy">
           <span class="book-title">Ego Is the Enemy</span>
-        </a>
-        <a href="https://www.amazon.com/dp/0525538585" target="_blank" class="book">
+        </div>
+        <div class="book">
           <img src="https://covers.openlibrary.org/b/isbn/9780525538585-M.jpg" alt="Stillness Is the Key">
           <span class="book-title">Stillness Is the Key</span>
-        </a>
-        <a href="https://www.amazon.com/dp/0735211736" target="_blank" class="book">
+        </div>
+        <div class="book">
           <img src="https://covers.openlibrary.org/b/isbn/9780735211735-M.jpg" alt="The Daily Stoic">
           <span class="book-title">The Daily Stoic</span>
-        </a>
-      </div>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 2: Research Pipeline -->
-    <section class="research-pipeline">
-      <h2 class="serif section-heading">Research Pipeline</h2>
-      
-      <div id="unauthed-state" class="notice-box">
-        Sign in to use the Research Pipeline.
-      </div>
-
-      <div id="authed-state" class="hidden">
-        <div class="pipeline-tabs">
-          <button class="pipe-tab active" data-target="tab-search">Deep Search</button>
-          <button class="pipe-tab" data-target="tab-similar">Find Similar</button>
-          <button class="pipe-tab" data-target="tab-library">My Library</button>
-        </div>
-
-        <!-- Tab A: Search -->
-        <div id="tab-search" class="pipe-content active">
-          <form id="form-search" class="tool-form">
-            <textarea id="search-query" placeholder="Natural language research query..." required></textarea>
-            <div class="form-row">
-              <input type="number" id="search-start" placeholder="From Year (e.g. 2018)">
-              <input type="number" id="search-end" placeholder="To Year (e.g. 2024)">
-              <select id="search-type">
-                <option value="keyword">Keyword</option>
-                <option value="neural" selected>Semantic (AI)</option>
-              </select>
-            </div>
-            <button type="submit">Run Search</button>
-          </form>
-          <div id="search-results" class="results-container"></div>
-        </div>
-
-        <!-- Tab B: Similar -->
-        <div id="tab-similar" class="pipe-content hidden">
-          <form id="form-similar" class="tool-form">
-            <input type="url" id="similar-url" placeholder="Paste paper URL or DOI..." required>
-            <button type="submit">Find Similar Papers</button>
-          </form>
-          <div id="similar-results" class="results-container"></div>
-        </div>
-
-        <!-- Tab C: Library -->
-        <div id="tab-library" class="pipe-content hidden">
-          <div class="library-controls">
-            <button id="refresh-library">Refresh Library</button>
-          </div>
-          <div id="library-results" class="results-container"></div>
         </div>
       </div>
-    </section>
-
-    <hr>
-
-    <!-- SECTION 4: Documentation -->
-    <section class="documentation">
-      <h2 class="serif section-heading">Documentation & Notes</h2>
-      <article class="doc-body">
-        <h3 class="serif">I. Purpose</h3>
-        <p>ResearchOS was built out of necessity for the Postgraduate Research Hub Discord community. It is designed for postgrads drowning in the trenches of paper deadlines, providing an unopinionated, dense interface to execute queries, process literature, and manage knowledge.</p>
-
-        <h3 class="serif">II. Architecture & Security</h3>
-        <p>This is a two-layer application. The frontend operates entirely statically via HTML/CSS/JS. The backend relies on Vercel Serverless Functions to securely route Exa API requests. </p>
-        <p><strong>Auth & Data:</strong> Managed by Supabase. Your private data is secured via Row Level Security (RLS). No service keys are exposed to the client. Environment variables (<code>SUPABASE_URL</code>, <code>SUPABASE_ANON_KEY</code>, <code>EXA_API_KEY</code>) are injected dynamically at runtime.</p>
-
-        <h3 class="serif">III. Exa Protocol</h3>
-        <p>The core pipeline queries the Exa neural search engine. </p>
-        <ul>
-          <li><strong>Semantic Search:</strong> Leverages Exa's <code>neural</code> search type. Phrase queries organically (e.g., "Papers detailing the mechanisms of neuroplasticity during REM sleep").</li>
-          <li><strong>Limitations:</strong> Search depth is locked to reputable academic domains (arXiv, PubMed, bioRxiv, Nature, ScienceDirect, Scholar, PLOS, Cell). Summaries are AI-generated; always cross-reference the original manuscript.</li>
-        </ul>
-
-        <h3 class="serif">IV. Contributing</h3>
-        <p>To report broken features, consult the community repo or submit an issue via the Discord hub.</p>
-        
-        <h3 class="serif">V. Changelog</h3>
-        <p class="changelog-entry"><strong>v1.0.0</strong> — Initial deploy. Implemented basic semantic routing, similarity processing, and persistent library via Supabase.</p>
-      </article>
     </section>
   </main>
 
