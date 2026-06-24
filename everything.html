@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResearchOS | Everything Else</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title" class="serif">Sign In</h2>
+        <button id="close-modal">✕</button>
+      </div>
+      <div class="modal-tabs">
+        <button id="tab-signin" class="active">Sign In</button>
+        <button id="tab-signup">Sign Up</button>
+      </div>
+      <form id="auth-form">
+        <input type="email" id="auth-email" placeholder="Email address" required>
+        <input type="password" id="auth-password" placeholder="Password" required>
+        <input type="password" id="auth-confirm" class="hidden" placeholder="Confirm password">
+        <button type="submit" id="auth-submit">Submit</button>
+      </form>
+      <div id="auth-msg" class="msg"></div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-left">
+      <a href="/" class="nav-brand serif">ResearchOS</a>
+      <div class="nav-links">
+        <a href="/pipeline">Pipeline</a>
+        <a href="/everything">Everything Else // Above Everything</a>
+      </div>
+    </div>
+    <div class="nav-auth">
+      <button id="btn-login" class="nav-link hidden">Sign In / Sign Up</button>
+      <div id="user-menu" class="nav-user hidden">
+        <span id="user-email"></span>
+        <button id="btn-logout" class="nav-link">Sign Out</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="editorial-landing">
+      <blockquote class="serif">
+        "It is good that [whatever we do] kicks our ass, messes with our heads. Would it be worth anything otherwise?"
+        <cite>— Ryan Holiday</cite>
+      </blockquote>
+      <p class="landing-sub">Sciences, arts, humanities... they're all great, but maybe management might be something a bit overlooked. Managing ourselves on our journeys.</p>
+      
+      <div class="book-row">
+        <div class="book">
+          <img src="https://covers.openlibrary.org/b/isbn/9781591846352-M.jpg" alt="The Obstacle Is the Way">
+          <span class="book-title">The Obstacle Is the Way</span>
+        </div>
+        <div class="book">
+          <img src="https://covers.openlibrary.org/b/isbn/9781591847816-M.jpg" alt="Ego Is the Enemy">
+          <span class="book-title">Ego Is the Enemy</span>
+        </div>
+        <div class="book">
+          <img src="https://covers.openlibrary.org/b/isbn/9780525538585-M.jpg" alt="Stillness Is the Key">
+          <span class="book-title">Stillness Is the Key</span>
+        </div>
+        <div class="book">
+          <img src="https://covers.openlibrary.org/b/isbn/9780735211735-M.jpg" alt="The Daily Stoic">
+          <span class="book-title">The Daily Stoic</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
