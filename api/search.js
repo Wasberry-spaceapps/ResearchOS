@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     const results = await exa.searchAndContents(query, {
       type: useAutoprompt ? "neural" : "keyword",
-      numResults: 10,
+      numResults: 40, // Changed from 10 to 40
       startPublishedDate: startYear ? `${startYear}-01-01` : undefined,
       endPublishedDate: endYear ? `${endYear}-12-31` : undefined,
       includeDomains: [
