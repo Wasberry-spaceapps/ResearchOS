@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { url } = req.body;
 
     const results = await exa.findSimilar(url, { 
-      numResults: 8, 
+      numResults: 40, // Changed from 8 to 40
       contents: { summary: true } 
     });
 
